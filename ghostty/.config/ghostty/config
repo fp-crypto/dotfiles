@@ -1,0 +1,68 @@
+working-directory = "/Users/fp/dev/"
+
+theme = "TokyoNight Storm"
+
+font-family = "Consolas NF"
+font-style = "Book"
+font-size = 18.0
+
+# window-padding-x = 2
+# window-padding-y = 2
+
+# Tmux keybindings (Ctrl+b prefix = \x02)
+
+# Tmux search
+keybind = cmd+slash=text:\x02[?
+
+# Tmux splits
+keybind = cmd+d=text:\x02v
+keybind = cmd+shift+d=text:\x02s
+
+# Tmux pane resizing
+keybind = cmd+shift+right=text:\x02\x1b[1;5C
+keybind = cmd+shift+left=text:\x02\x1b[1;5D
+keybind = cmd+shift+up=text:\x02\x1b[1;5A
+keybind = cmd+shift+down=text:\x02\x1b[1;5B
+
+# Tmux new window
+keybind = cmd+t=text:\x02c
+
+# Tmux window selection
+keybind = cmd+0=text:\x020
+keybind = cmd+1=text:\x021
+keybind = cmd+2=text:\x022
+keybind = cmd+3=text:\x023
+keybind = cmd+4=text:\x024
+keybind = cmd+5=text:\x025
+keybind = cmd+6=text:\x026
+keybind = cmd+7=text:\x027
+keybind = cmd+8=text:\x028
+keybind = cmd+9=text:\x029
+keybind = cmd+digit_0=text:\x020
+keybind = cmd+digit_1=text:\x021
+keybind = cmd+digit_2=text:\x022
+keybind = cmd+digit_3=text:\x023
+keybind = cmd+digit_4=text:\x024
+keybind = cmd+digit_5=text:\x025
+keybind = cmd+digit_6=text:\x026
+keybind = cmd+digit_7=text:\x027
+keybind = cmd+digit_8=text:\x028
+keybind = cmd+digit_9=text:\x029
+
+# Tmux pane navigation with arrows
+keybind = cmd+left=text:\x02\x1b[D
+keybind = cmd+down=text:\x02\x1b[B
+keybind = cmd+up=text:\x02\x1b[A
+keybind = cmd+right=text:\x02\x1b[C
+
+# Tmux pane switching
+#keybind = cmd+left_bracket=text:\x02;
+keybind = cmd+left_bracket=text:\x02O
+keybind = cmd+right_bracket=text:\x02o
+
+# Tmux command prompt
+keybind = cmd+shift+semicolon=text:\x02:
+
+# Tmux url popup
+keybind = opt+u=text:\x02\x1bu
+keybind = shift+enter=text:\x1b\r

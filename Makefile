@@ -1,4 +1,4 @@
-PACKAGES := tmux ghostty
+PACKAGES := tmux ghostty zsh
 STOW_FLAGS := --target=$(HOME)
 
 .PHONY: install uninstall $(PACKAGES)

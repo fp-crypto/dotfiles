@@ -56,9 +56,10 @@ keybind = cmd+up=text:\x02\x1b[A
 keybind = cmd+right=text:\x02\x1b[C
 
 # Tmux pane switching
-#keybind = cmd+left_bracket=text:\x02;
 keybind = cmd+[=text:\x02O
 keybind = cmd+]=text:\x02o
+keybind = cmd+shift+[=text:\x02p
+keybind = cmd+shift+]=text:\x02n
 
 # Tmux command prompt
 keybind = cmd+shift+semicolon=text:\x02:

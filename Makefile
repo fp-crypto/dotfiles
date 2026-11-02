@@ -1,8 +1,9 @@
 PACKAGES := tmux ghostty zsh colima pnpm
 STOW_FLAGS := --target=$(HOME) --no-folding
 FONT_DIR := fonts
+DIST := $(HOME)/Desktop/dotfiles.zip
 
-.PHONY: bootstrap install uninstall brew brew-dump omz tpm nvim fonts foundry gcloud $(PACKAGES)
+.PHONY: bootstrap install uninstall brew brew-dump dist omz tpm nvim fonts foundry gcloud $(PACKAGES)
 
 bootstrap: brew omz install tpm nvim fonts foundry gcloud
 
@@ -16,6 +17,11 @@ brew:
 
 brew-dump:
 	brew bundle dump --file=Brewfile --force
+
+dist:
+	rm -f $(DIST)
+	cd .. && zip -qr $(DIST) $(notdir $(CURDIR)) -x '*.DS_Store'
+	@echo "wrote $(DIST)"; unzip -l $(DIST) | tail -1
 
 omz:
 	test -d $(HOME)/.oh-my-zsh || \

@@ -64,6 +64,12 @@ These need a manual step after `make bootstrap`.
   `brew upgrade` on its own. If a native install exists, remove it so the two
   don't conflict: `rm -f ~/.local/bin/claude && rm -rf ~/.local/share/claude`.
 
+## Moving to a new machine without GitHub access
+
+`make dist` zips the repo, including `.git` and whatever is in `fonts/`, to
+`~/Desktop/dotfiles.zip`. Unzip it to `~/dev/dotfiles` on the new machine and
+run `make bootstrap`. Override the output path with `make dist DIST=/path/to.zip`.
+
 ## Maintenance
 
 - `make brew-dump` rewrites the Brewfile from what's installed. Review the diff

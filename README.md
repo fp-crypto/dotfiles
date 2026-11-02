@@ -22,7 +22,7 @@ make bootstrap
 | `omz`     | installs oh-my-zsh unattended; stows `zsh` first so the installer keeps that `.zshrc` |
 | `tpm`     | clones the tmux plugin manager; run `prefix + I` in tmux after    |
 | `nvim`    | clones [nvim-config](https://github.com/fp-crypto/nvim-config) over HTTPS; switch the remote to SSH to push |
-| `fonts`   | copies `.ttf`/`.otf` files from `fonts/` into `~/Library/Fonts`   |
+| `fonts`   | copies `.ttf`/`.otf` files from `fonts/` into `~/Library/Fonts` and registers them with CoreText |
 | `foundry` | forge, cast, anvil via foundryup                                  |
 | `gcloud`  | `gke-gcloud-auth-plugin`, needed by kubectl for GKE clusters      |
 
@@ -55,7 +55,9 @@ These need a manual step after `make bootstrap`.
   repo. Drop the four `Consolas * Nerd Font Complete Mono Windows Compatible.ttf`
   files into the gitignored `fonts/` directory before `make bootstrap`, or point
   at them directly: `make fonts FONT_DIR=/path/to/fonts`. The target skips when
-  no fonts are found. `brew install --cask font-cascadia-code-nf` is the closest
+  no fonts are found. Copying alone isn't always enough for macOS to notice new
+  fonts, so the target also registers them through CoreText; apps that were
+  already open, Ghostty included, need a full quit and relaunch to see them. `brew install --cask font-cascadia-code-nf` is the closest
   open alternative if you'd rather change `font-family`.
 - **colima**: `colima start` creates the VM from the stowed template.
   Then link buildx: `mkdir -p ~/.docker/cli-plugins && ln -sfn $(brew --prefix)/opt/docker-buildx/bin/docker-buildx ~/.docker/cli-plugins/docker-buildx`

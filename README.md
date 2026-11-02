@@ -21,7 +21,7 @@ make bootstrap
 | `install` | stows every package into `$HOME`                                  |
 | `omz`     | installs oh-my-zsh unattended; stows `zsh` first so the installer keeps that `.zshrc` |
 | `tpm`     | clones the tmux plugin manager; run `prefix + I` in tmux after    |
-| `nvim`    | clones [nvim-config](https://github.com/fp-crypto/nvim-config)    |
+| `nvim`    | clones [nvim-config](https://github.com/fp-crypto/nvim-config) over HTTPS; switch the remote to SSH to push |
 | `fonts`   | copies `.ttf`/`.otf` files from `fonts/` into `~/Library/Fonts`   |
 | `foundry` | forge, cast, anvil via foundryup                                  |
 | `gcloud`  | `gke-gcloud-auth-plugin`, needed by kubectl for GKE clusters      |

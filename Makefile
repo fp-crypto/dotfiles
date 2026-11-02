@@ -33,7 +33,7 @@ tpm:
 
 nvim:
 	test -d $(HOME)/.config/nvim || \
-		git clone git@github.com:fp-crypto/nvim-config.git $(HOME)/.config/nvim
+		git clone https://github.com/fp-crypto/nvim-config.git $(HOME)/.config/nvim
 
 fonts:
 	@found=$$(find "$(FONT_DIR)" -maxdepth 1 \( -name '*.ttf' -o -name '*.otf' \) 2>/dev/null); \

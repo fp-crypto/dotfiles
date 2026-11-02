@@ -1,4 +1,5 @@
 *.local
 *.bak
 .DS_Store
-fonts/
+fonts/*
+!fonts/.gitkeep

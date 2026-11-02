@@ -38,6 +38,7 @@ Each top-level directory is a stow package mirroring `$HOME`.
 | `zsh`    | `~/.zshrc` and helpers in `~/.config/zsh/`                      |
 | `tmux`   | `~/.tmux.conf` (TokyoNight theme, tpm plugins)                  |
 | `ghostty`| `~/.config/ghostty/config` (tmux keybinds under cmd)            |
+| `git`    | `~/.gitconfig` (delta, nvimdiff, SSH signing via 1Password) and the global `~/.gitignore` |
 | `colima` | `~/.colima/_templates/default.yaml`, used when a profile is created |
 | `pnpm`   | `~/Library/Preferences/pnpm/config.yaml` (release-age and trust-policy hardening) |
 

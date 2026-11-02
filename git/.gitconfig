@@ -1,0 +1,62 @@
+[user]
+	name = FP
+	email = fp_crypt@protonmail.com
+	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAII6naqbqRh8B6FTucNnp2tBs6cwjE/Z3O2BrlYRD29EV
+
+[init]
+	defaultBranch = main
+
+[core]
+	excludesfile = ~/.gitignore
+	editor = nvim
+	pager = delta
+
+[interactive]
+	diffFilter = delta --color-only --features=interactive
+
+[delta]
+	navigate = true  # use n and N to move between diff sections
+	features = decorations
+	line-numbers = true
+	side-by-side = true
+	syntax-theme = Solarized (dark)
+	decorations = true
+
+[merge]
+	conflictstyle = diff3
+	tool = Kaleidoscope
+
+[difftool "Kaleidoscope"]
+  cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
+
+[difftool "nvimdiff"]
+  cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
+
+[difftool "nvrdiff"]
+  cmd = zsh -i -c \"nvrdiff \\\"$LOCAL\\\" \\\"$REMOTE\\\"\"
+
+[difftool]
+	prompt = false
+
+[diff]
+  colorMoved = default
+  tool = nvimdiff
+  #tool = Kaleidoscope
+
+[mergetool "Kaleidoscope"]
+	cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" \"$REMOTE\"
+
+# If you want to set up Kaleidoscope as the default merge tool,
+# then also set the following variables:
+[mergetool]
+	prompt = false
+
+[gpg]
+  format = ssh
+
+[gpg "ssh"]
+  program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
+
+[commit]
+  gpgsign = true
+

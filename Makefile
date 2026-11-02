@@ -1,4 +1,4 @@
-PACKAGES := tmux ghostty zsh colima pnpm
+PACKAGES := tmux ghostty zsh git colima pnpm
 BREW_PREFIX := /opt/homebrew
 export PATH := $(BREW_PREFIX)/bin:$(PATH)
 STOW_FLAGS := --target=$(HOME) --no-folding

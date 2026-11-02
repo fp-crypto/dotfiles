@@ -1,0 +1,7 @@
+pyvenv.cfg
+.DS_Store
+CLAUDE.md
+.claude
+.aider*
+soljson-latest.js
+.pnpm-store/

@@ -10,11 +10,22 @@ xcode-select --install
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 git clone git@github.com:fp-crypto/dotfiles.git ~/dev/dotfiles
 cd ~/dev/dotfiles
-make brew       # install everything in the Brewfile
-make install    # stow every package into $HOME
-make foundry    # forge, cast, anvil via foundryup
-make gcloud     # gke-gcloud-auth-plugin, needed by kubectl for GKE clusters
+make bootstrap
 ```
+
+`bootstrap` runs these in order, each of which can also be run alone:
+
+| Target    | Does                                                              |
+| --------- | ----------------------------------------------------------------- |
+| `brew`    | `brew bundle` on the Brewfile                                     |
+| `omz`     | installs oh-my-zsh unattended, keeping the stowed `.zshrc`        |
+| `install` | stows every package into `$HOME`                                  |
+| `tpm`     | clones the tmux plugin manager; run `prefix + I` in tmux after    |
+| `nvim`    | clones [nvim-config](https://github.com/fp-crypto/nvim-config)    |
+| `foundry` | forge, cast, anvil via foundryup                                  |
+| `gcloud`  | `gke-gcloud-auth-plugin`, needed by kubectl for GKE clusters      |
+
+The clone targets skip when the directory already exists.
 
 ## Packages
 
@@ -36,14 +47,8 @@ and git ignores.
 
 ## Not covered by brew
 
-These need a manual step after `make install`.
+These need a manual step after `make bootstrap`.
 
-- **oh-my-zsh**: `.zshrc` expects it at `~/.oh-my-zsh`.
-  `sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"`
-- **tpm**: `git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm`,
-  then `prefix + I` inside tmux.
-- **neovim config**: lives in its own repo.
-  `git clone git@github.com:fp-crypto/nvim-config.git ~/.config/nvim`
 - **Font**: Ghostty is set to `Consolas NF`, a Nerd Font patch of Microsoft's
   Consolas. The font is proprietary and not redistributable, so copy the four
   `Consolas * Nerd Font Complete Mono Windows Compatible.ttf` files into

@@ -18,9 +18,6 @@ export ZSH=~/.oh-my-zsh
 ZSH_THEME="agnoster"
 #ZSH_THEME="powerlevel10k/powerlevel10k"
 
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init --path)"
 
 # Set list of themes to load
 # Setting this variable when ZSH_THEME=random
@@ -79,7 +76,6 @@ plugins=(
   brew
   kubectl
   golang
-  pyenv
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -130,6 +126,7 @@ export EDITOR=nvim
 export KUBE_EDITOR=nvim
 
 export USE_GKE_GCLOUD_AUTH_PLUGIN=True
+export CLAUDE_CODE_PACKAGE_MANAGER_AUTO_UPDATE=1
 
 export OPENBLAS=/opt/homebrew/opt/openblas
 
@@ -140,9 +137,6 @@ alias vr=nvr
 
 alias cat=bat
 
-# export PYENV_ROOT="$HOME/.pyenv"
-# command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
-# eval "$(pyenv init -)"
 
 nvim() {
   local sock="${NVIM_LISTEN_ADDRESS:-/tmp/nvimsocket$(tmux display-message -p '#{window_id}')}"

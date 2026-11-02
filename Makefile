@@ -1,7 +1,7 @@
-PACKAGES := tmux ghostty zsh
-STOW_FLAGS := --target=$(HOME)
+PACKAGES := tmux ghostty zsh colima pnpm
+STOW_FLAGS := --target=$(HOME) --no-folding
 
-.PHONY: install uninstall brew brew-dump $(PACKAGES)
+.PHONY: install uninstall brew brew-dump foundry gcloud $(PACKAGES)
 
 install: $(PACKAGES)
 
@@ -13,6 +13,12 @@ brew:
 
 brew-dump:
 	brew bundle dump --file=Brewfile --force
+
+gcloud:
+	gcloud components install gke-gcloud-auth-plugin
+
+foundry:
+	curl -L https://foundry.paradigm.xyz | bash && $(HOME)/.foundry/bin/foundryup
 
 $(PACKAGES):
 	stow $(STOW_FLAGS) $@

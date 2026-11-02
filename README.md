@@ -22,6 +22,7 @@ make bootstrap
 | `install` | stows every package into `$HOME`                                  |
 | `tpm`     | clones the tmux plugin manager; run `prefix + I` in tmux after    |
 | `nvim`    | clones [nvim-config](https://github.com/fp-crypto/nvim-config)    |
+| `fonts`   | copies `.ttf`/`.otf` files from `fonts/` into `~/Library/Fonts`   |
 | `foundry` | forge, cast, anvil via foundryup                                  |
 | `gcloud`  | `gke-gcloud-auth-plugin`, needed by kubectl for GKE clusters      |
 
@@ -50,10 +51,12 @@ and git ignores.
 These need a manual step after `make bootstrap`.
 
 - **Font**: Ghostty is set to `Consolas NF`, a Nerd Font patch of Microsoft's
-  Consolas. The font is proprietary and not redistributable, so copy the four
-  `Consolas * Nerd Font Complete Mono Windows Compatible.ttf` files into
-  `~/Library/Fonts` from a backup. `brew install --cask font-cascadia-code-nf`
-  is the closest open alternative if you'd rather change `font-family`.
+  Consolas. The font is proprietary and not redistributable, so it isn't in the
+  repo. Drop the four `Consolas * Nerd Font Complete Mono Windows Compatible.ttf`
+  files into the gitignored `fonts/` directory before `make bootstrap`, or point
+  at them directly: `make fonts FONT_DIR=/path/to/fonts`. The target skips when
+  no fonts are found. `brew install --cask font-cascadia-code-nf` is the closest
+  open alternative if you'd rather change `font-family`.
 - **colima**: `colima start` creates the VM from the stowed template.
   Then link buildx: `mkdir -p ~/.docker/cli-plugins && ln -sfn $(brew --prefix)/opt/docker-buildx/bin/docker-buildx ~/.docker/cli-plugins/docker-buildx`
 - **Claude Code**: installed from the `claude-code@latest` cask.

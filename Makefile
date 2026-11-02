@@ -1,9 +1,10 @@
 PACKAGES := tmux ghostty zsh colima pnpm
 STOW_FLAGS := --target=$(HOME) --no-folding
+FONT_DIR := fonts
 
-.PHONY: bootstrap install uninstall brew brew-dump omz tpm nvim foundry gcloud $(PACKAGES)
+.PHONY: bootstrap install uninstall brew brew-dump omz tpm nvim fonts foundry gcloud $(PACKAGES)
 
-bootstrap: brew omz install tpm nvim foundry gcloud
+bootstrap: brew omz install tpm nvim fonts foundry gcloud
 
 install: $(PACKAGES)
 
@@ -27,6 +28,12 @@ tpm:
 nvim:
 	test -d $(HOME)/.config/nvim || \
 		git clone git@github.com:fp-crypto/nvim-config.git $(HOME)/.config/nvim
+
+fonts:
+	@found=$$(find "$(FONT_DIR)" -maxdepth 1 \( -name '*.ttf' -o -name '*.otf' \) 2>/dev/null); \
+	if [ -z "$$found" ]; then echo "no fonts in $(FONT_DIR), skipping (set FONT_DIR=/path to override)"; exit 0; fi; \
+	mkdir -p $(HOME)/Library/Fonts; \
+	echo "$$found" | while IFS= read -r f; do cp -v "$$f" $(HOME)/Library/Fonts/; done
 
 gcloud:
 	gcloud components install gke-gcloud-auth-plugin

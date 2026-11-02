@@ -18,8 +18,8 @@ make bootstrap
 | Target    | Does                                                              |
 | --------- | ----------------------------------------------------------------- |
 | `brew`    | `brew bundle` on the Brewfile                                     |
-| `omz`     | installs oh-my-zsh unattended, keeping the stowed `.zshrc`        |
 | `install` | stows every package into `$HOME`                                  |
+| `omz`     | installs oh-my-zsh unattended; stows `zsh` first so the installer keeps that `.zshrc` |
 | `tpm`     | clones the tmux plugin manager; run `prefix + I` in tmux after    |
 | `nvim`    | clones [nvim-config](https://github.com/fp-crypto/nvim-config)    |
 | `fonts`   | copies `.ttf`/`.otf` files from `fonts/` into `~/Library/Fonts`   |

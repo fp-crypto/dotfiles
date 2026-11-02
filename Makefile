@@ -5,7 +5,7 @@ DIST := $(HOME)/Desktop/dotfiles.zip
 
 .PHONY: bootstrap install uninstall brew brew-dump dist omz tpm nvim fonts foundry gcloud $(PACKAGES)
 
-bootstrap: brew omz install tpm nvim fonts foundry gcloud
+bootstrap: brew install omz tpm nvim fonts foundry gcloud
 
 install: $(PACKAGES)
 
@@ -23,7 +23,7 @@ dist:
 	cd .. && zip -qr $(DIST) $(notdir $(CURDIR)) -x '*.DS_Store'
 	@echo "wrote $(DIST)"; unzip -l $(DIST) | tail -1
 
-omz:
+omz: zsh
 	test -d $(HOME)/.oh-my-zsh || \
 		KEEP_ZSHRC=yes sh -c "$$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 

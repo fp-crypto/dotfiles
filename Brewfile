@@ -1,5 +1,3 @@
-tap "homebrew/bundle"
-tap "homebrew/services"
 brew "aws-sam-cli"
 brew "awscli"
 brew "bat"

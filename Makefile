@@ -1,9 +1,11 @@
 PACKAGES := tmux ghostty zsh colima pnpm
+BREW_PREFIX := /opt/homebrew
+export PATH := $(BREW_PREFIX)/bin:$(PATH)
 STOW_FLAGS := --target=$(HOME) --no-folding
 FONT_DIR := fonts
 DIST := $(HOME)/Desktop/dotfiles.zip
 
-.PHONY: bootstrap install uninstall brew brew-dump dist omz tpm nvim fonts foundry gcloud $(PACKAGES)
+.PHONY: bootstrap install uninstall homebrew brew brew-dump dist omz tpm nvim fonts foundry gcloud $(PACKAGES)
 
 bootstrap: brew install omz tpm nvim fonts foundry gcloud
 
@@ -12,7 +14,11 @@ install: $(PACKAGES)
 uninstall:
 	stow -D $(STOW_FLAGS) $(PACKAGES)
 
-brew:
+homebrew:
+	test -x $(BREW_PREFIX)/bin/brew || \
+		NONINTERACTIVE=1 /bin/bash -c "$$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+brew: homebrew
 	brew bundle --file=Brewfile
 
 brew-dump:

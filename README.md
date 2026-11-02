@@ -6,17 +6,18 @@ macOS setup managed with [GNU Stow](https://www.gnu.org/software/stow/) and a
 ## Bootstrap a new machine
 
 ```sh
-xcode-select --install
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-git clone git@github.com:fp-crypto/dotfiles.git ~/dev/dotfiles
+git clone https://github.com/fp-crypto/dotfiles.git ~/dev/dotfiles
 cd ~/dev/dotfiles
 make bootstrap
 ```
+
+macOS prompts to install the Command Line Tools the first time `git` runs.
 
 `bootstrap` runs these in order, each of which can also be run alone:
 
 | Target    | Does                                                              |
 | --------- | ----------------------------------------------------------------- |
+| `homebrew`| installs Homebrew if `/opt/homebrew/bin/brew` is missing          |
 | `brew`    | `brew bundle` on the Brewfile                                     |
 | `install` | stows every package into `$HOME`                                  |
 | `omz`     | installs oh-my-zsh unattended; stows `zsh` first so the installer keeps that `.zshrc` |
